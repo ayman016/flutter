@@ -1,0 +1,183 @@
+Here the whole code for this course \
+
+
+Main : 
+
+import 'package:backdev/pageone.dart';
+import 'package:backdev/pagetwo.dart';
+import 'package:backdev/screenhome.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(debugShowCheckedModeBanner: false, home: ScreenHome(),
+    routes: {
+      'homescreen' : (context) => ScreenHome(),
+      'pageone' : (context) => Pageone(),
+      'pagetwo' : (context) => Pagetwo(),
+    },
+    );
+  }
+}
+
+
+
+Home Screen : 
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  int? hello;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'Healthy',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: ListView(
+        children: [
+          MaterialButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushNamed('pageone');
+            },
+            child: Text('go to page one'),
+          ),
+          MaterialButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushNamed('pagetwo');
+            },
+            child: Text('go to page two'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+Page one : 
+
+import 'package:flutter/material.dart';
+
+class Pageone extends StatefulWidget {
+  const Pageone({super.key});
+
+  @override
+  State<Pageone> createState() => _PageoneState();
+}
+
+class _PageoneState extends State<Pageone> {
+  @override
+  void initState() {
+    print('=======page one initSiate ');
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    print('=======page one dipose');
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(centerTitle: true, title: Text('page one')),
+      body: ListView(
+        children: [
+          MaterialButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil('homescreen', (Route) => false);
+            },
+            child: Text('go to home page '),
+          ),
+          MaterialButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushNamed('pagetwo');
+            },
+            child: Text('go to page two'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+Page two :
+
+
+import 'package:flutter/material.dart';
+
+class Pagetwo extends StatefulWidget {
+  const Pagetwo({super.key});
+
+  @override
+  State<Pagetwo> createState() => _PagetwoState();
+}
+
+class _PagetwoState extends State<Pagetwo> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(centerTitle: true, title: Text('page two')),
+      body: ListView(
+        children: [
+          MaterialButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil('homescreen', (Route) => false);
+            },
+            child: Text('go to home screen'),
+          ),
+          MaterialButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushNamed('pageone');
+            },
+            child: Text('go to page one'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+

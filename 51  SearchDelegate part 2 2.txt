@@ -1,0 +1,98 @@
+تفضل، ها هو *الكود الكامل بعد التصحيح* باش فاش تختار عنصر من البحث، يبان فـ `result`:
+
+```dart
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+List<String> username = ['ayman', 'salim', 'samir', 'hello', 'wael', 'lore'];
+List<String>? filtterlist;
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'Hello',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(context: context, delegate: CustomSearch());
+            },
+            icon: Icon(Icons.search),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomSearch extends SearchDelegate {
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: Icon(Icons.close),
+      ),
+    ];
+  }
+
+  @overrideWidget? buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: Icon(Icons.arrow_back),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return Center(
+      child: Text(
+        'You selected: $query',
+        style: TextStyle(fontSize: 24),
+      ),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> suggestionList = query.isEmpty
+        ? username
+        : username.where((element) => element.toLowerCase().contains(query.toLowerCase())).toList();
+
+    return ListView.builder(
+      itemCount: suggestionList.length,
+      itemBuilder: (context, i) {
+        return ListTile(
+          title: Text(suggestionList[i]),
+          onTap: () {
+            query = suggestionList[i];
+            showResults(context);
+          },
+        );
+      },
+    );
+  }
+}
+```
+
+هكا غيتعرض الإسم المختار مباشرة عند الضغط عليه.

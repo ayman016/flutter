@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+List username = [
+  {'name': 'Ayman', 'email': 'aymanboumadi1999@.gmail.com', 'date': '20 age'},
+  {'name': 'Ahmed', 'email': 'ahmedhello2000@gmailcom', 'date': '21'},
+  {'name': 'Ali', 'email': 'alihi1999@gmial.com', 'date': '25'},
+];
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'listgenerate ',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: ListView(
+        children: [
+          ...List.generate(username.length, (context) {
+            return Card(
+              child: Expanded(
+                child: ListTile(
+                  title: Text(username[context]['name']),
+                  subtitle: Text(username[context]['email']),
+                  trailing: Text(username[context]['date']),
+                ),
+              ),
+            );
+          }),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+Example number 2 :
+
+
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'listgenerate ',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: ListView(
+        children: [
+          ...List.generate(126, (context) => Text('${1900 + context}')),
+        ],
+      ),
+    );
+  }
+}
+

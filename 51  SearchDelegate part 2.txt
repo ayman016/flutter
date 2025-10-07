@@ -1,0 +1,118 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+List username = [
+  'ayman',
+  'wael',
+  'ali',
+  'ahmed',
+  'salim',
+  'amin',
+  'omar',
+  'samir',
+  'sahil',
+];
+List? filterlist;
+
+class _ScreenHomeState extends State<ScreenHome> {
+  int? hello;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'Hello',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(context: context, delegate: custormsearch());
+            },
+            icon: Icon(Icons.search),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class custormsearch extends SearchDelegate {
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      MaterialButton(
+        onPressed: () {
+          query = '';
+        },
+        child: Icon(Icons.close),
+      ),
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return MaterialButton(
+      onPressed: () {
+        close(context, null);
+      },
+      child: Icon(Icons.arrow_back),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return Text('resutle $query');
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    if (query == '') {
+      return InkWell(
+        onTap: () {
+          showResults(context);
+        },
+        child: ListView.builder(
+          itemCount: username.length,
+          itemBuilder: (context, i) {
+            return Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('${username[i]}'),
+              ),
+            );
+          },
+        ),                
+      );
+    } else {
+      filterlist = username
+          .where((element) => element.contains(query))
+          // .where((element) => element.startsWith(query))
+          .toList();
+      return ListView.builder(
+        itemCount: filterlist!.length,
+        itemBuilder: (context, i) {
+          return Card(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('${filterlist![i]}'),
+            ),
+          );
+        },
+      );
+    }
+  }
+}

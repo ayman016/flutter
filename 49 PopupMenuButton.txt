@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  int? hello;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'Hello',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          PopupMenuButton(
+            icon: Icon(Icons.abc),
+            onSelected: (val) {
+              if (val == 'valone') {
+                print('it clicked on valone');
+              } else if (val == 'valtwo') {
+                print('it clicked on valtwo');
+              }
+            },
+            onOpened: () {
+              print('open');
+            },
+            onCanceled: () {
+              print('close');
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(child: Text('one'), value: 'valone'),
+              PopupMenuItem(child: Text('one'), value: 'valtwo'),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
