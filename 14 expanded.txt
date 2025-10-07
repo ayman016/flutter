@@ -1,0 +1,74 @@
+
+
+
+
+Expanded
+
+
+
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.greenAccent,
+        centerTitle: true,
+        title: Text(
+          'My Healthy',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+
+      body: Container(
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(color: Colors.amber),
+                width: 100,
+                height: 100,
+                margin: EdgeInsets.all(10),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(color: Colors.red),
+                width: 100,
+                height: 100,
+                margin: EdgeInsets.all(10),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(color: Colors.deepOrange),
+                width: 100,
+                height: 100,
+                margin: EdgeInsets.all(10),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(color: Colors.purple),
+                width: 100,
+                height: 100,
+                margin: EdgeInsets.all(10),
+              ),
+            ),
+          ],
+        ),
+        
+      ),
+      
+    );
+  }
+}

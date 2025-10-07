@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.list)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.percent)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+        ],
+        elevation: 50,
+        shadowColor: Colors.black,
+        leading: MaterialButton(onPressed: () {}, child: Icon(Icons.percent)),
+        backgroundColor: Colors.green,
+
+        centerTitle: true,
+        title: Text('My App'),
+      ),
+    );
+  }
+}

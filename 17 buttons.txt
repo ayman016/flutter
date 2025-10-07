@@ -1,0 +1,224 @@
+
+
+ MaterialButton
+
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'healthy',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+
+        child: Column(
+          children: [
+            MaterialButton(
+              color: Colors.amber,
+              textColor: Colors.purple,
+              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+              onLongPress: () {
+                print('hello you');
+              },
+              onPressed: () {
+                print('sir t9ra asahbi hhhhh');
+              },
+              child: Text('my name is ayman '),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+Icon button :
+
+
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        
+        onPressed: () {},
+        backgroundColor: Colors.blueAccent,
+        
+        child: const Icon(
+          Icons.restaurant_menu_outlined,
+          color: Colors.white,
+          size: 40,
+        ),
+      ),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'healthy',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Container(
+        color: Colors.pink,
+        margin: EdgeInsets.all(10),
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,	
+          children: [
+            IconButton(
+              onPressed: () {
+                print('hello you');
+              },
+              icon: Icon(Icons.restaurant_menu, size: 80, color: Colors.blue),
+            ),
+            IconButton(
+              onPressed: () {
+                print('hello you');
+              },
+              icon: Icon(Icons.restaurant_menu, size: 80, color: Colors.amber),
+            ),
+            IconButton(
+              onPressed: () {
+                print('hello you');
+              },
+              icon: Icon(Icons.restaurant_menu, size: 80, color: Colors.purple),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blueAccent,
+
+        child: const Icon(
+          
+          Icons.restaurant_menu_outlined,
+          color: Colors.white,
+          size: 40,
+        ),
+      ),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'healthy',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+
+        child: ListView(
+          children: [
+            Container(height: 400, color: Colors.red),
+            Container(height: 400, color: Colors.green),
+            Container(height: 400, color: Colors.purple),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+Floating location :
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blueAccent,
+
+        child: const Icon(
+          Icons.restaurant_menu_outlined,
+          color: Colors.white,
+          size: 40,
+        ),
+      ),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'healthy',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+
+        child: ListView(
+          children: [
+            Container(height: 400, color: Colors.red),
+            Container(height: 400, color: Colors.green),
+            Container(height: 400, color: Colors.purple),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

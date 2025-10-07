@@ -1,0 +1,186 @@
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  // GlobalKey<ScaffoldState> scaffoldkey = GlobalKey();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // key: scaffoldkey,
+      appBar: AppBar(
+        shadowColor: Colors.black,
+        elevation: 10,
+
+        centerTitle: true,
+        backgroundColor: Colors.green,
+        title: Text('my app'),
+      ),
+      drawer: Drawer(
+        child: Container(
+          margin: EdgeInsets.all(4),
+          child: ListView(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    child: ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(20),
+                      child: Image.asset(
+                        'assets/images/Pin by Wanderson Rodrigues on 6556 | Cartoon profile pics, Anime, Cartoon profile pictures.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      title: Text('ayman'),
+                      subtitle: Text('aymanboumadi1999@gmail.com'),
+                    ),
+                  ),
+                ],
+              ),
+              ListTile(
+                title: Text('home'),
+                leading: Icon(Icons.home),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('help'),
+                leading: Icon(Icons.help),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('singout'),
+                leading: Icon(Icons.exit_to_app),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('arrow'),
+                leading: Icon(Icons.arrow_back),
+                onTap: () {
+                  print('');
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+      // body: Container(
+      //   margin: EdgeInsets.all(5),
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       Center(
+      //         child: MaterialButton(
+      //           textColor: Colors.red,
+      //           onPressed: () {
+      //             scaffoldkey.currentState!.openDrawer();
+      //           },
+      //           child: Icon(Icons.open_in_browser, size: 40),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+    );
+  }
+}
+
+
+
+In case there is no appbar:
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  GlobalKey<ScaffoldState> scaffoldkey = GlobalKey();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldkey,
+      // appBar: AppBar(
+      //   shadowColor: Colors.black,
+      //   elevation: 10,
+      //   centerTitle: true,
+      //   backgroundColor: Colors.green,
+      //   title: const Text('My App'),
+      // ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(3),
+                  width: 60,
+                  height: 60,
+                  child: ClipRRect(
+                    borderRadius: BorderRadiusGeometry.circular(20),
+                    child: Image.asset('assets/heart.png'),
+                  ),
+                ),
+                Expanded(
+                  child: ListTile(
+                    title: Text('ayman'),
+                    subtitle: Text('aymanboumadi1999@gmail.com'),
+                  ),
+                ),
+              ],
+            ),
+            const Divider(),
+            ListTile(
+              leading: Icon(Icons.home),
+              onTap: () {},
+              title: Text('home'),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              onTap: () {},
+              title: Text('home'),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              onTap: () {},
+              title: Text('home'),
+            ),
+            Container(
+              child: ListTile(
+                leading: Icon(Icons.home),
+                onTap: () {
+                  scaffoldkey.currentState!.closeDrawer();
+                },
+                title: Text('home'),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Container(
+          child: MaterialButton(
+            onPressed: () {
+              scaffoldkey.currentState!.openDrawer();
+            },
+            child: Text('open drawer'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+

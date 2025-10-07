@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text('Stack', style: TextStyle(fontSize: 25)),
+      ),
+      body: Container(
+        child: Stack(
+          clipBehavior: Clip.none, // to show somthinngs hide
+          alignment: Alignment.bottomRight,
+          children: [
+            Container(height: 300, width: 300, color: Colors.redAccent),
+            Container(height: 200, width: 200, color: Colors.blueAccent),
+            Positioned(
+              bottom: -130,
+              child: Container(
+                height: 100,
+                width: 100,
+                color: Colors.greenAccent,
+              ),
+            ),
+            Positioned( // get more control in pace
+              left: 0,
+              top: 0,
+              child: Text('ayman', style: TextStyle(color: Colors.amber)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

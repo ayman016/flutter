@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  GlobalKey<FormState> formstate = GlobalKey();
+  String? ayman;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'textfiled',
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        ),
+      ),
+      body: Container(
+        child: Form(
+          key: formstate,
+          child: Column(
+            children: [
+              TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'is empty try agin please ';
+                  }
+                },
+              ),
+              MaterialButton(
+                color: Colors.red, 
+                textColor: Colors.white,
+                onPressed: () {
+                  if (formstate.currentState!.validate()) {
+                    print('valid');
+                  } else {
+                    print('not valide !');
+                  }
+                },
+                child: Text('valid'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+Another option like more or less number on textfield :
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  GlobalKey<FormState> formstate = GlobalKey();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'textfiled',
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        ),
+      ),
+      body: Container(
+        child: Form(
+          key: formstate,
+          child: Column(
+            children: [
+              TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'is empty somthing please ';
+                  }
+                  if (value.length > 10) {
+                    return ' value can not be more that 10 ';
+                  }
+                  if (value.length < 10) {
+                    return ' value can not be less that 10 ';
+                  }
+                },
+              ),
+              MaterialButton(
+                color: Colors.red,
+                textColor: Colors.white,
+                onPressed: () {
+                  if (formstate.currentState!.validate()) {
+                    print('valid');
+                  } else {
+                    print('invalid');
+                  }
+                },
+                child: Text('valid'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

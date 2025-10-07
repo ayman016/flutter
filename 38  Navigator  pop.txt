@@ -1,0 +1,11 @@
+The Principe of navigator of pop the same like push : 
+   MaterialButton(
+              color: Colors.red,
+              textColor: Colors.purple,
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).pop(MaterialPageRoute(builder: (context) => Screenhome()));
+              },
+              child: Text('back'),
+            ),

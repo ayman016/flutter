@@ -1,0 +1,139 @@
+
+Stageful wedgits    setstate 
+
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+int i = 0;
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            i++;
+            print('hello');
+          });
+          print('hello');
+        },
+        backgroundColor: Colors.amber,
+        child: Icon(Icons.music_off, color: Colors.blue),
+      ),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreenAccent,
+        title: Text(
+          'Healthy',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.purpleAccent,
+          ),
+        ),
+      ),
+      body: Container(
+        width: 600,
+        height: 600,
+        color: Colors.red,
+
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    i--;
+                  });
+
+                  print(i);
+                },
+                icon: Icon(Icons.remove, size: 90),
+              ),
+              Text('counter $i', style: TextStyle(fontSize: 40)),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    i++;
+                  });
+
+                  print(i);
+                },
+                icon: Icon(Icons.add, size: 90),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+Example with star :
+
+
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  bool status = true;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'Healthy',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: Container(
+        child: Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  status = true;
+                });
+              },
+              icon: Icon(Icons.add),
+            ),
+            status ? Icon(Icons.star) : Icon(Icons.star_border_outlined),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  status = false;
+                });
+              },
+              icon: Icon(Icons.remove),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

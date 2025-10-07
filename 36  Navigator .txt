@@ -1,0 +1,112 @@
+import 'package:backdev/aboutus.dart';
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 170, 128, 2),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        centerTitle: true,
+        title: Text(
+          'navigation bar',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
+      ),
+      body: Container(
+        height: 300,
+        margin: EdgeInsets.all(6),
+        child: Column(
+          children: [
+            Container(
+              height: 80,
+              child: PageView(
+                children: [
+                  goldencard(
+                    name: 'ayman',
+                    email: 'qgwi',
+                    date: 'qwugi',
+                    imagelist: 'assets/heart.png',
+                  ),
+                ],
+              ),
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => Aboutus()));
+              },
+              child: Text('go to about us'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class goldencard extends StatelessWidget {
+  final String name;
+  final String email;
+  final String date;
+  final String imagelist;
+  const goldencard({
+    super.key,
+    required this.name,
+    required this.email,
+    required this.date,
+    required this.imagelist,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Row(
+        children: [
+          Container(
+            width: 70,
+            height: 70,
+            padding: EdgeInsets.all(4),
+            child: ClipRRect(child: Image.asset(imagelist, fit: BoxFit.cover)),
+          ),
+          Expanded(
+            child: ListTile(
+              title: Text(name),
+              subtitle: Text('$email.@gmail.com'),
+              trailing: Text(date),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+Main code here :
+
+
+  MaterialButton(
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => Aboutus()));
+              },
+              child: Text('go to about us'),
+            ),

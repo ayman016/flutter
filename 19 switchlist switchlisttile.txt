@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  bool status = true;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        title: Text(
+          'Healthy',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: Container(
+        child: Row(
+          children: [
+            Spacer(),
+            Container(
+              color: Colors.amber,
+              width: 250,
+              child: SwitchListTile(
+                title: Text(
+                  'dark/light mode',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+                activeColor: Colors.amber,
+                activeTrackColor: Colors.grey,
+                inactiveThumbColor: Colors.black,
+                inactiveTrackColor: const Color.fromARGB(255, 2, 120, 216),
+                value: status,
+                onChanged: (val) {
+                  setState(() {
+                    print(val);
+                    status = val;
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+

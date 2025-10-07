@@ -1,0 +1,156 @@
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+List categories = [
+  {'icon': Icons.laptop, 'name': 'Laptop'},
+  {'icon': Icons.phone_android, 'name': 'Phone'},
+  {'icon': Icons.electric_bike, 'name': 'Bike'},
+  {'icon': Icons.car_repair_outlined, 'name': 'Car'},
+  {'icon': Icons.card_giftcard_outlined, 'name': 'Gift'},
+  {'icon': Icons.sports_baseball, 'name': 'Ball'},
+];
+List ccard = [
+  {
+    'image': 'assets/heart.png',
+    'name': 'Heart',
+    'descrip': 'goodeheart',
+    'price': '350\$',
+  },
+  {
+    'image': 'assets/vinyl-record.png',
+    'name': 'Record',
+    'descrip': 'high quality recorde',
+    'price': '250\$',
+  },
+];
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.all(2),
+        child: ListView(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'search',
+                        hintStyle: TextStyle(fontSize: 20),
+                        prefixIcon: Icon(Icons.search),
+                        fillColor: Colors.grey[300],
+                        filled: true,
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsGeometry.only(left: 10),
+                    child: Icon(Icons.menu),
+                  ),
+                ],
+              ),
+            ),
+            Container(height: 20),
+            Container(
+              padding: EdgeInsets.only(left: 20),
+              child: Text(
+                'Categories',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+            ),
+            SizedBox(height: 10),
+            Container(
+              height: 100,
+              padding: EdgeInsets.only(left: 10),
+              child: ListView.builder(
+                itemCount: categories.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, i) {
+                  return Padding(
+                    padding: EdgeInsetsGeometry.only(right: 10),
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Icon(categories[i]['icon'], size: 40),
+                        ),
+                        Text(
+                          categories[i]['name'],
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            Container(height: 10),
+            Container(
+              padding: EdgeInsets.only(left: 20),
+              child: Text(
+                'Best selling',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+            ),
+            SizedBox(height: 20),
+            GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisExtent: 250,
+              ),
+              itemCount: ccard.length,
+              itemBuilder: (context, i) {
+                return Card(
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(4),
+                        child: Image.asset(
+                          ccard[i]['image'],
+                          width: 150,
+                          height: 150,
+                        ),
+                      ),
+                      Text(
+                        ccard[i]['name'],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(ccard[i]['descrip'], style: TextStyle(fontSize: 13)),
+                      Text(
+                        ccard[i]['price'],
+                        style: TextStyle(
+                          color: Colors.deepOrange,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

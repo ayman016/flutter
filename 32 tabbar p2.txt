@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome>
+    with SingleTickerProviderStateMixin {
+  TabController? tabController;
+  @override
+  void initState() {
+    tabController = TabController(length: 2, vsync: this);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('drawer'),
+        backgroundColor: Colors.amber,
+        bottom: TabBar(
+          controller: tabController,
+          indicatorColor: Colors.pink,
+          labelColor: Colors.blue,
+          unselectedLabelColor: Colors.black,
+          labelStyle: TextStyle(fontSize: 18),
+          unselectedLabelStyle: TextStyle(fontSize: 10),
+          tabs: [
+            Tab(icon: Icon(Icons.laptop), text: 'laptop'),
+            Tab(icon: Icon(Icons.phone), text: 'phone'),
+          ],
+        ),
+      ),
+      body: Container(
+        child: TabBarView(
+          controller: tabController,
+          children: [
+            Column(
+              children: [
+                Tab(text: 'hello'),
+                MaterialButton(
+                  onPressed: () {
+                    tabController!.animateTo(1);
+                  },
+                  child: Text('go to phone page'),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Tab(text: 'hello again'),
+                MaterialButton(
+                  onPressed: () {
+                    tabController!.animateTo(0);
+                  },
+                  child: Text('go to laptop page'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

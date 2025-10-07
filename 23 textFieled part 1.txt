@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'textfiled',
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                // labelText: 'user name -email-number :',
+                // labelStyle: TextStyle(color: Colors.lightBlue),
+                prefixText: 'username :',
+                prefixStyle: TextStyle(color: Colors.white),
+                fillColor: Colors.grey,
+                filled: true,
+              ),
+            ),
+            SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'password :',
+                labelStyle: TextStyle(color: Colors.lightBlue),
+                prefixIcon: Icon(Icons.key, size: 40),
+                prefixIconColor: Colors.black,
+              ),
+            ),
+            TextField(
+              decoration: InputDecoration(
+                icon: Icon(Icons.person, color: Colors.amber),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

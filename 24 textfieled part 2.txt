@@ -1,0 +1,166 @@
+
+
+About border :
+
+
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'textfiled',
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            TextField(
+              enabled: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.pink, width: 5),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.purple, width: 5),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blueGrey, width: 20),
+                ),
+                icon: Icon(Icons.person, size: 20, color: Colors.deepPurple),
+                hintText: 'user name ',
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+About text input :
+
+
+
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'textfiled',
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            TextField(
+              // maxLength: 10,
+              keyboardType: TextInputType.name,
+              maxLines: 4,
+              minLines: 1,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+Mix brewed text and border option :
+
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: Text(
+          'textfiled',
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            TextField(
+              maxLength: 10,
+              maxLines: 10,
+              minLines: 1,
+              decoration: InputDecoration(
+                enabled: true,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.green, width: 6),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red, width: 6),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.green, width: 4),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 6),
+                ),
+                labelText: 'user,enail,number',
+                labelStyle: TextStyle(color: Colors.lightBlue),
+                icon: Icon(Icons.person, size: 40),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

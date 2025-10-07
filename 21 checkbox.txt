@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  bool sport = false;
+  bool walk = false;
+  bool play = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.amber,
+        title: Text('Test'),
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Text('what is your favorite hobits '),
+            CheckboxListTile(
+              title: Text('sport'),
+              value: sport,
+              onChanged: (val) {
+                setState(() {
+                  sport = val!;
+                });
+              },
+            ),
+            CheckboxListTile(
+              title: Text('sport'),
+              value: walk,
+              onChanged: (val) {
+                setState(() {
+                  walk = val!;
+                });
+              },
+            ),
+            CheckboxListTile(
+              title: Text('sport'),
+              value: play,
+              onChanged: (val) {
+                setState(() {
+                  play = val!;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

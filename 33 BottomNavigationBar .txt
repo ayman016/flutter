@@ -1,0 +1,50 @@
+ import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  int selectpage = 1;
+
+  List<Widget> listwidget = [
+    Text('page number 1 ', style: TextStyle(fontSize: 25)),
+    Text('page number 2 ', style: TextStyle(fontSize: 25)),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          setState(() {
+            selectpage = value;
+          });
+        },
+        currentIndex: selectpage,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+        selectedFontSize: 20,
+        unselectedFontSize: 10,
+        backgroundColor: Colors.deepPurple,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
+      backgroundColor: Colors.amber,
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        centerTitle: true,
+        title: Text('drawer', style: TextStyle(color: Colors.purple)),
+      ),
+      body: Container(child: listwidget.elementAt(selectpage)),
+    );
+  }
+}

@@ -1,0 +1,286 @@
+Screenhome :
+
+import 'package:backdev/details.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+List iconsname = [
+  {'icon': Icons.laptop, 'name': 'Laptop'},
+  {'icon': Icons.phone_android, 'name': 'Phone'},
+  {'icon': Icons.electric_bike, 'name': 'Bike'},
+  {'icon': Icons.card_giftcard_outlined, 'name': 'Gift'},
+  {'icon': Icons.sports_baseball, 'name': 'Baseball'},
+];
+List item = [
+  {
+    'images': 'assets/heart.png',
+    'name': 'Heart',
+    'descrip': 'good heart',
+    'price': '350\$',
+  },
+
+  {
+    'images': 'assets/vinyl-record.png',
+    'name': 'Record',
+    'descrip': 'High quality recorde',
+    'price': '250\$',
+  },
+  {
+    'images': 'assets/history.png',
+    'name': 'History',
+    'descrip': 'High quality history',
+    'price': '100\$',
+  },
+  {
+    'images': 'assets/gmail.png',
+    'name': 'Email',
+    'descrip': 'High quality emails',
+    'price': '50\$',
+  },
+];
+
+class _ScreenhomeState extends State<Screenhome> {
+  int selectpage = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.deepPurple,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectpage,
+        iconSize: 40,
+        selectedItemColor: Colors.deepOrange,
+        onTap: (value) {
+          setState(() {
+            selectpage = value;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: '*'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: '*',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_2_outlined),
+            label: '*',
+          ),
+        ],
+      ),
+      body: Container(
+        margin: EdgeInsets.all(6),
+        child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsetsGeometry.all(10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      keyboardType: TextInputType.number,
+
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: Colors.grey[300],
+                        prefixIcon: Icon(Icons.search, color: Colors.black),
+                        hintText: 'search',
+                        hintStyle: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsGeometry.only(left: 10),
+                    child: Icon(Icons.menu, color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            Container(height: 30),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              child: Text(
+                'Categories',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.all(10),
+              height: 120,
+              child: ListView.builder(
+                itemCount: iconsname.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, i) {
+                  return Container(
+                    padding: EdgeInsets.only(right: 25),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          child: Icon(iconsname[i]['icon'], size: 40),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          iconsname[i]['name'],
+                          style: TextStyle(color: Colors.amberAccent),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              child: Text(
+                'Best selling',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+
+            GridView.builder(
+              itemCount: item.length,
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisExtent: 250,
+              ),
+              itemBuilder: (context, i) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Details(data: item[i]),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.amber,
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Image.asset(
+                            item[i]['images'],
+                            width: 100,
+                            height: 100,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          item[i]['name'],
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          item[i]['descrip'],
+                          style: TextStyle(fontSize: 10),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          item[i]['price'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.deepOrange,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+Screen dyal details :
+
+
+
+import 'package:flutter/material.dart';
+
+class Details extends StatefulWidget {
+  final data;
+  const Details({super.key, this.data});
+
+  @override
+  State<Details> createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 30,
+              height: 30,
+              child: Image.asset('assets/heart.png', width: 30, height: 30),
+            ),
+            Text(' Ecomerce '),
+            Text('Ayman', style: TextStyle(color: Colors.deepOrange)),
+          ],
+        ),
+      ),
+      body: Container(
+        child: ListView(
+          children: [
+            Container(
+              width: 70,
+              height: 70,
+              child: Image.asset(widget.data['images']),
+            ),
+            Column(children: [Text(widget.data['name'])]),
+            Column(children: [Text(widget.data['descrip'])]),
+            Column(children: [Text(widget.data['price'])]),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

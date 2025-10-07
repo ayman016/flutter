@@ -1,0 +1,67 @@
+ import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  GlobalKey<FormState> fomstate = GlobalKey();
+  String? username;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+
+        backgroundColor: Colors.pink,
+        title: Text(
+          'hello',
+          style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
+        ),
+        leading: Icon(Icons.menu, color: Colors.amber),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Form(
+          autovalidateMode: AutovalidateMode.always,
+          key: fomstate,
+          child: Column(
+            children: [
+              TextFormField( 
+                textAlign: TextAlign.center,
+                obscureText: true,
+                autovalidateMode: AutovalidateMode.always,
+                onSaved: (Val) {
+                  username = Val;
+                },
+                decoration: InputDecoration(labelText: 'username'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'is empty dakhl shi haja';
+                  }
+                },
+              ),
+              MaterialButton(
+                color: Colors.amber,
+                textColor: Colors.pink,
+                onPressed: () {
+                  if (fomstate.currentState!.validate()) {
+                    fomstate.currentState!.save();
+                    print('valid');
+                    print(username);
+                  } else {
+                    print('invalid');
+                  }
+                },
+                child: Text('valid'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

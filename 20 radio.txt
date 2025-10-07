@@ -1,0 +1,179 @@
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  String? country = 'hello';
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.amber,
+        title: Text('choose'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            // SizedBox(height: 10),
+            Text(
+              'choose you country please : ',
+              style: TextStyle(fontSize: 25),
+            ),
+            RadioListTile(
+              title: Text('morroco'),
+              value: 'morroco',
+              groupValue: country,
+              onChanged: (val) {
+                setState(() {
+                  country = val;
+                });
+              },
+            ),
+            RadioListTile(
+              title: Text('algeria'),
+              value: 'algeria',
+              groupValue: country,
+              onChanged: (val) {
+                setState(() {
+                  country = val;
+                });
+              },
+            ),
+            RadioListTile(
+              title: Text('egybt'),
+              value: 'egybt',
+              groupValue: country,
+              onChanged: (val) {
+                setState(() {
+                  country = val;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+Example 2 :
+
+
+
+import 'package:flutter/material.dart';
+
+class ScreenHome extends StatefulWidget {
+  const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  String? country = 'hello';
+  int? age = 10;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.amber,
+        title: Text('choose'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Text(
+              'choose you country please : ',
+              style: TextStyle(fontSize: 25),
+            ),
+            RadioListTile(
+              activeColor: Colors.purple,
+              title: Text('morroco'),
+              value: 'morroco',
+              groupValue: country,
+              onChanged: (val) {
+                setState(() {
+                  country = val;
+                });
+              },
+            ),
+            RadioListTile(
+              activeColor: Colors.blue,
+              title: Text('algeria'),
+              value: 'algeria',
+              groupValue: country,
+              onChanged: (val) {
+                setState(() {
+                  country = val;
+                });
+              },
+            ),
+            RadioListTile(
+              activeColor: Colors.deepOrange,
+              title: Text('egybt'),
+              value: 'egybt',
+              groupValue: country,
+              onChanged: (val) {
+                setState(() {
+                  country = val;
+                });
+              },
+            ),
+            Text('choose you age please : ', style: TextStyle(fontSize: 25)),
+            RadioListTile(
+              activeColor: Colors.purple,
+              title: Text('10'),
+              value: 10,
+              groupValue: age,
+              onChanged: (val) {
+                setState(() {
+                  age = val;
+                });
+              },
+            ),
+            RadioListTile(
+              activeColor: Colors.blue,
+              title: Text('20'),
+              value: 20,
+              groupValue: age,
+              onChanged: (val) {
+                setState(() {
+                  age = val;
+                });
+              },
+            ),
+            RadioListTile(
+              activeColor: Colors.deepOrange,
+              title: Text('30'),
+              value: 30,
+              groupValue: age,
+              onChanged: (val) {
+                setState(() {
+                  age = val;
+                });
+              },
+            ),
+            Text('you country is $country '),
+            Text('you age is $age'),
+          ],
+        ),
+      ),
+    );
+  }
+}

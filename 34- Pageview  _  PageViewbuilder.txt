@@ -1,0 +1,112 @@
+
+Pageview :
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 170, 128, 2),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        centerTitle: true,
+        title: Text(
+          'navigation bar',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(7),
+              height: 300,
+              child: PageView(
+                onPageChanged: (value) {
+                  print(value);
+                },
+                children: [Text('hello'), Text('hello 2'), Text('hello 3s')],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+Pageview.builder :
+
+
+
+
+import 'package:flutter/material.dart';
+
+class Screenhome extends StatefulWidget {
+  const Screenhome({super.key});
+
+  @override
+  State<Screenhome> createState() => _ScreenhomeState();
+}
+
+class _ScreenhomeState extends State<Screenhome> {
+  List imagelist = [
+    'assets/gmail.png',
+    'assets/heart.png',
+    'assets/history.png',
+    'assets/vinyl-record.png',
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 170, 128, 2),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        centerTitle: true,
+        title: Text(
+          'navigation bar',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(7),
+              height: 300,
+              child: PageView.builder(
+                itemCount: imagelist.length,
+                itemBuilder: (context, i) {
+                  return Image.asset(imagelist[i], fit: BoxFit.cover);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
